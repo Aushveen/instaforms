@@ -529,3 +529,38 @@ img {
     flex: 0 0 50%;
   }
 }
+
+/* Additional styles for the school search */
+.search__results {
+  margin-top: 10px;
+  padding: 0;
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: var(--body-color);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: none;
+}
+
+.school-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer; /* Change cursor to pointer for clickable items */
+  transition: background-color 0.3s;
+}
+
+.school-item:hover {
+  background-color: var(--body-color-alt);
+}
+
+.school-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.school-name {
+  font-size: var(--normal-font-size);
+}

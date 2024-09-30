@@ -29,9 +29,6 @@
         <a href="index.html" class="nav__logo">
           <img src="assets/img/logo.png" alt="" class="nav__logo-img" />
         </a>
-
-
-
       <div class="nav__overlay" id="nav-overlay"></div>
     </header>
 
@@ -41,17 +38,38 @@
         <div class="home__data">
           <h1 class="home__title">Connect with a roomate!</h1>
           <p class="home__description">
-            Submit a request to post on our instagram pages here. Start off with selecting your school
+            Submit a request to post on our Instagram pages here. Start off with selecting your school.
           </p>
+
+          <!-- Updated Search Bar and School List -->
           <div class="home__search">
             <i class="fa-sharp fa-solid fa-magnifying-glass search__icon"></i>
             <input
               type="text"
-              placeholder="Search Your Cources"
+              placeholder="Search Your School"
               class="search__input"
+              id="searchInput"
+              onkeyup="filterSchools()"
             />
-            <button class="search__btn btn">Search</button>
+            <button class="search__btn btn">Next</button>
           </div>
+
+          <!-- School Suggestions -->
+          <ul class="search__results" id="schoolList">
+            <li class="school-item">
+              <img src="assets/img/school1-logo.png" alt="School 1 Logo" class="school-logo">
+              <span class="school-name">School 1</span>
+            </li>
+            <li class="school-item">
+              <img src="assets/img/school2-logo.png" alt="School 2 Logo" class="school-logo">
+              <span class="school-name">School 2</span>
+            </li>
+            <li class="school-item">
+              <img src="assets/img/school3-logo.png" alt="School 3 Logo" class="school-logo">
+              <span class="school-name">School 3</span>
+            </li>
+            <!-- Add more schools as needed -->
+          </ul>
 
           <div class="home__info">
             <div class="info__item">
@@ -84,9 +102,9 @@
           </div>
 
           <div class="stats__data">
-            <h3 class="stats__title">200+ Cources</h3>
+            <h3 class="stats__title">200+ Courses</h3>
             <p class="stats__description">
-              Duis aute irure dolor in voluptate velit esse cillum labore .
+              Duis aute irure dolor in voluptate velit esse cillum labore.
             </p>
           </div>
         </div>
@@ -99,7 +117,7 @@
           <div class="stats__data">
             <h3 class="stats__title">Lifetime Access</h3>
             <p class="stats__description">
-              Duis aute irure dolor in voluptate velit esse cillum labore .
+              Duis aute irure dolor in voluptate velit esse cillum labore.
             </p>
           </div>
         </div>
@@ -112,7 +130,7 @@
           <div class="stats__data">
             <h3 class="stats__title">800k+ Enrolled</h3>
             <p class="stats__description">
-              Duis aute irure dolor in voluptate velit esse cillum labore .
+              Duis aute irure dolor in voluptate velit esse cillum labore.
             </p>
           </div>
         </div>
