@@ -584,6 +584,10 @@ img {
   background-color: var(--title-color); /* A different color for the back button */
 }
 
+#backCaptionBtn {
+  background-color: var(--title-color); /* A different color for the back button */
+}
+
 /* School search result styling */
 .search__results {
   margin-top: 10px;

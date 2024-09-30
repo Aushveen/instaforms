@@ -114,9 +114,50 @@ document.getElementById('nextBtn').addEventListener('click', function() {
   const instagramUsername = document.getElementById('instagramUsername').value;
   
   if (instagramUsername) {
-    alert('Proceeding to the next step with Instagram username: ' + instagramUsername);
     // You can add logic here to slide to the next section or process the username.
   } else {
     alert('Please enter your Instagram username before proceeding.');
+  }
+});
+
+// Move from Instagram username section to the caption section
+document.getElementById('nextBtn').addEventListener('click', function() {
+  const instagramUsername = document.getElementById('instagramUsername').value;
+  
+  if (instagramUsername) {
+    // Slide Instagram username section out of view and show caption section
+    document.getElementById('instagramSection').style.transform = 'translateX(-100%)';
+    document.getElementById('instagramSection').style.transition = 'transform 0.5s ease';
+    
+    // Show the caption section
+    setTimeout(function() {
+      document.getElementById('captionSection').classList.add('active');
+    }, 500);
+  } else {
+    alert('Please enter your Instagram username before proceeding.');
+  }
+});
+
+// Move from caption section back to Instagram username section
+document.getElementById('backCaptionBtn').addEventListener('click', function() {
+  const captionSection = document.getElementById('captionSection');
+  const instagramSection = document.getElementById('instagramSection');
+
+  // Slide the caption section out of view and show Instagram username section
+  captionSection.classList.remove('active');
+  
+  setTimeout(function() {
+    instagramSection.style.transform = 'translateX(0)';
+  }, 300); 
+});
+
+// Handle next button for Instagram caption section
+document.getElementById('nextCaptionBtn').addEventListener('click', function() {
+  const instagramCaption = document.getElementById('instagramCaption').value;
+  
+  if (instagramCaption) {
+    // Add logic here to proceed to the next section
+  } else {
+    alert('Please enter a caption before proceeding.');
   }
 });
