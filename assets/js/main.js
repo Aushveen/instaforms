@@ -151,13 +151,70 @@ document.getElementById('backCaptionBtn').addEventListener('click', function() {
   }, 300); 
 });
 
-// Handle next button for Instagram caption section
+// Move from caption section to photo upload section
 document.getElementById('nextCaptionBtn').addEventListener('click', function() {
   const instagramCaption = document.getElementById('instagramCaption').value;
   
   if (instagramCaption) {
-    // Add logic here to proceed to the next section
+    // Slide caption section out of view and show photo upload section
+    document.getElementById('captionSection').style.transform = 'translateX(-100%)';
+    document.getElementById('captionSection').style.transition = 'transform 0.5s ease';
+    
+    // Show the photo upload section
+    setTimeout(function() {
+      document.getElementById('photoUploadSection').classList.add('active');
+    }, 500);
   } else {
     alert('Please enter a caption before proceeding.');
+  }
+});
+
+// Move from photo upload section back to caption section
+document.getElementById('backPhotoBtn').addEventListener('click', function() {
+  const photoUploadSection = document.getElementById('photoUploadSection');
+  const captionSection = document.getElementById('captionSection');
+
+  // Slide the photo upload section out of view and show caption section
+  photoUploadSection.classList.remove('active');
+  
+  setTimeout(function() {
+    captionSection.style.transform = 'translateX(0)';
+  }, 300); 
+});
+
+// Handle photo upload
+const photoBoxes = document.querySelectorAll('.photo-upload__box');
+const photoInputs = document.querySelectorAll('.photo-input');
+
+photoBoxes.forEach((box, index) => {
+  box.addEventListener('click', () => {
+    photoInputs[index].click();
+  });
+
+  photoInputs[index].addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        box.innerHTML = '';
+        box.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+});
+
+// Handle submit button for photo upload section
+document.getElementById('submitPhotoBtn').addEventListener('click', function() {
+  const uploadedPhotos = document.querySelectorAll('.photo-upload__box img');
+  
+  if (uploadedPhotos.length > 0) {
+    // Add logic here to process the uploaded photos
+    alert('Photos submitted successfully!');
+    // You can add more logic here to move to the next section or finalize the process
+  } else {
+    alert('Please upload at least one photo before submitting.');
   }
 });
