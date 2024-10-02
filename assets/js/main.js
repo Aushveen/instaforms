@@ -116,36 +116,79 @@ photoBoxes.forEach((box, index) => {
 });
 
 // Handle form submission and append files from the array to FormData
-document.getElementById('submitPhotoBtn').addEventListener('click', function() {
-  const formData = new FormData(); // Create a new FormData object
+document.getElementById('submitPhotoBtn').addEventListener('click', function () {
+  const submissionStatus = document.getElementById('submissionStatus'); // Get the status element
+  submissionStatus.classList.remove('success', 'error'); // Reset status classes
+  submissionStatus.classList.add('processing');
+  submissionStatus.innerText = 'Processing submit request...';
 
-  // Append text data to FormData (e.g., school, Instagram username, etc.)
-  formData.append('schoolSearch', document.getElementById('searchInput').value);
-  formData.append('instagramUsername', document.getElementById('instagramUsername').value);
-  formData.append('caption', document.getElementById('instagramCaption').value);
+  const schoolSearch = document.getElementById('searchInput').value;
+  const instagramUsername = document.getElementById('instagramUsername').value;
+  const caption = document.getElementById('instagramCaption').value;
 
-  // Iterate over the fixed-size array and append the files to FormData
-  uploadedFiles.forEach((file, index) => {
+  if (!schoolSearch) {
+    submissionStatus.classList.remove('processing');
+    submissionStatus.classList.add('error');
+    submissionStatus.innerText = 'Please select a school.';
+    return;
+  }
+  if (!instagramUsername) {
+    submissionStatus.classList.remove('processing');
+    submissionStatus.classList.add('error');
+    submissionStatus.innerText = 'Please enter your Instagram username.';
+    return;
+  }
+  if (!caption) {
+    submissionStatus.classList.remove('processing');
+    submissionStatus.classList.add('error');
+    submissionStatus.innerText = 'Please enter a caption.';
+    return;
+  }
+
+  // Proceed with submitting form if all checks pass
+  const formData = new FormData();
+  formData.append('schoolSearch', schoolSearch);
+  formData.append('instagramUsername', instagramUsername);
+  formData.append('caption', caption);
+
+  uploadedFiles.forEach((file) => {
     if (file) {
-      formData.append(`photos[${index}]`, file); // Append file to FormData, if it exists
-      console.log(`File at index ${index} appended to FormData:`, file.name);
-    } else {
-      console.log(`No file selected for index ${index}`);
+      formData.append('photos', file);
     }
   });
 
-  // Send the collected data using a POST request to your backend
-  fetch('http://localhost:8080/instagram', {
+  fetch('https://jguides.onrender.com/instagram', {
     method: 'POST',
     body: formData
   })
-  .then((response) => response.text())
-  .then((data) => {
-    alert('Successfully submitted your Instagram post!');
-    console.log('Success:', data);
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-    alert('Error submitting the post.');
-  });
+    .then((response) => {
+      if (!response.ok) {
+        if (response.status >= 500) {
+          throw new Error('Server error');
+        } else {
+          return response.text().then((errorText) => {
+            throw new Error(errorText);
+          });
+        }
+      }
+      return response.text();
+    })
+    .then((data) => {
+      submissionStatus.classList.remove('processing');
+      submissionStatus.classList.add('success');
+      submissionStatus.innerText = 'Success! Please remember to pay, redirecting you to the checkout...';
+      // Redirect to Stripe checkout after 3 seconds
+      setTimeout(() => {
+        window.location.href = 'https://buy.stripe.com/00g8xA1c59dSdOgdQU';
+      }, 3000); // 3 second delay before redirect
+    })
+    .catch((error) => {
+      submissionStatus.classList.remove('processing');
+      submissionStatus.classList.add('error');
+      if (error.message === 'Server error') {
+        submissionStatus.innerText = 'Error submitting the form. Please contact josh@jguides.com.';
+      } else {
+        submissionStatus.innerText = `Error submitting the form, please make sure you upload at least 1 photo`;
+      }
+    });
 });
