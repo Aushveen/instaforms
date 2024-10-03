@@ -180,7 +180,7 @@ document.getElementById('submitPhotoBtn').addEventListener('click', function () 
       // Redirect to Stripe checkout after 3 seconds
       setTimeout(() => {
         window.location.href = 'https://buy.stripe.com/00g8xA1c59dSdOgdQU';
-      }, 3000); // 3 second delay before redirect
+      }, 2000); // 3 second delay before redirect
     })
     .catch((error) => {
       submissionStatus.classList.remove('processing');
