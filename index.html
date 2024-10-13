@@ -218,13 +218,13 @@
             </div>
 
             <div class="info__item">
-              <h4 class="info__no">1000s</h4>
+              <h4 class="info__no">1000's</h4>
               <span class="info__title">of students</span>
             </div>
 
             <div class="info__item">
-              <h4 class="info__no">$4.97</h4>
-              <span class="info__title">One-time fee and free pennant sticker included</span>
+              <h4 class="info__no">$4.99</h4>
+              <span class="info__title">Same day posting and free pennant sticker included</span>
             </div>
           </div>
         </div>
@@ -239,7 +239,7 @@
         <h2 class="instagram__title">Enter Your Instagram Username</h2>
         <input
           type="text"
-          placeholder="Your Instagram Username"
+          placeholder="@username"
           class="instagram__input"
           id="instagramUsername"
         />
@@ -257,7 +257,7 @@
       <div class="instagram__container container grid">
         <h2 class="instagram__title">Enter Your Instagram Caption</h2>
           <textarea
-          placeholder="Your Instagram Caption"
+          placeholder="Write a short bio to introduce yourself and share anything you'd like others to know"
           class="instagram__textarea"
           id="instagramCaption"
           rows="5"
@@ -274,7 +274,7 @@
     <div id="photoUploadSection" class="section photo-upload-section">
       <div class="photo-upload__container container grid">
         <h2 class="photo-upload__title">Upload Your Photos</h2>
-        <p class="photo-upload__description">Click on a box to upload a photo (up to 6 photos)</p>
+        <p class="photo-upload__description">Click on a box to upload a photo (up to 9 photos)</p>
         
         <div class="photo-upload__grid">
           <div class="photo-upload__box" data-index="0">
@@ -301,11 +301,24 @@
             <input type="file" class="photo-input" accept="image/*" hidden>
             <i class="fas fa-plus"></i>
           </div>
+          <div class="photo-upload__box" data-index="6">
+            <input type="file" class="photo-input" accept="image/*" hidden>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="photo-upload__box" data-index="7">
+            <input type="file" class="photo-input" accept="image/*" hidden>
+            <i class="fas fa-plus"></i>
+          </div>
+          <div class="photo-upload__box" data-index="8">
+            <input type="file" class="photo-input" accept="image/*" hidden>
+            <i class="fas fa-plus"></i>
+          </div>
         </div>
     
         <div class="photo-upload__buttons">
           <button id="backPhotoBtn" class="btn">Back</button>
           <button id="submitPhotoBtn" class="btn">Submit</button>
+          <button id="removeAllPhotosBtn" class="btn">Remove All Images</button>
         </div>
         <div id="submissionStatus" class="submission-status"></div>
       </div>
@@ -323,7 +336,7 @@
           <div class="stats__data">
             <h3 class="stats__title">24 Hours</h3>
             <p class="stats__description">
-              Once submitted, please wait 1 day for us to make the post.
+              Once submitted, please allow 24 hours for your post to be uploaded.
             </p>
           </div>
         </div>

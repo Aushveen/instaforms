@@ -79,7 +79,7 @@ document.getElementById('backPhotoBtn').addEventListener('click', function() {
 });
 
 // Initialize a fixed-size array for storing uploaded files (6 slots)
-const uploadedFiles = new Array(6).fill(null);
+const uploadedFiles = new Array(9).fill(null);
 
 // Handle photo upload by triggering the input file click event
 const photoBoxes = document.querySelectorAll('.photo-upload__box');
@@ -112,6 +112,19 @@ photoBoxes.forEach((box, index) => {
 
       console.log(`File stored at index ${index}:`, file);
     }
+  });
+});
+
+// Add event listener to the "Remove All Images" button
+document.getElementById('removeAllPhotosBtn').addEventListener('click', function() {
+  // Clear all the files from the array
+  uploadedFiles.fill(null); // Set all elements in the array to null
+  
+  // Loop through each photo upload box and reset it
+  photoBoxes.forEach((box, index) => {
+    box.innerHTML = '<i class="fas fa-plus"></i>'; // Reset the content to the "+" icon
+    const input = photoInputs[index];
+    input.value = ''; // Reset the input field
   });
 });
 

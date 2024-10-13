@@ -745,6 +745,10 @@ img {
 #backPhotoBtn {
   background-color: var(--title-color);
 }
+
+#removeAllPhotosBtn {
+  background-color: #ff4d4d;
+}
 /* Updated CSS for vertical scrolling */
 /* Make sections stack vertically */
 section {
