@@ -275,15 +275,16 @@ img {
 
 .home__info {
   display: flex;
-  flex-wrap: wrap;
-  row-gap: 18px;
-  max-width: 470px;
-  margin-top: 30px;
+  justify-content: center; /* Center the stats */
+  gap: 20px; /* Add some space between items */
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  max-width: 100%; /* Ensure it doesn't exceed the container */
+  margin-top: 20px;
 }
 
 .info__item {
-  width: 33.33%;
-  flex: 0 0 33.33%;
+  flex: 0 1 30%; /* Allow each stat to take up 30% of the available width */
+  text-align: center; /* Center the content inside each item */
 }
 
 .info__no {
@@ -532,6 +533,13 @@ img {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .info__item {
+    padding-top: 10px;
+    flex: 0 1 100%; /* Make each item take full width on smaller screens */
+  }
+}
+
 /* Hide Instagram section by default */
 .instagram-section {
   opacity: 0;
@@ -595,7 +603,7 @@ img {
 
 .instagram__textarea {
   padding: 15px;
-  font-size: var(--normal-font-size);
+  font-size: 16px; /* Set font size to 16px to prevent zooming */
   width: 100%; /* Ensure it takes the full width of the container */
   max-width: 400px; /* Set a max-width to prevent it from being too wide */
   margin-bottom: 20px;
@@ -604,7 +612,7 @@ img {
 
 .instagram__input {
   padding: 15px;
-  font-size: var(--normal-font-size);
+  font-size: 16px; /* Set font size to 16px to prevent zooming */
   width: 100%;
   max-width: 400px;
   margin-bottom: 20px;
@@ -765,9 +773,6 @@ img {
   background-color: var(--title-color);
 }
 
-#removeAllPhotosBtn {
-  background-color: #ff4d4d;
-}
 /* Updated CSS for vertical scrolling */
 /* Make sections stack vertically */
 section {
