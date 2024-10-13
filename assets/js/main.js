@@ -7,6 +7,11 @@ function filterSchools() {
   
   let found = false;
 
+  if (filter.trim() === "") {
+    schoolList.style.display = 'none'; // Hide the list if input is empty
+    return; // Exit the function if no input
+  }
+
   // Loop through all schools and hide those that don't match the search query
   for (let i = 0; i < schools.length; i++) {
     const schoolName = schools[i].getElementsByClassName('school-name')[0];
@@ -20,6 +25,9 @@ function filterSchools() {
       schools[i].addEventListener('click', function() {
         input.value = schoolName.textContent; // Set the input value to the selected school
         schoolList.style.display = 'none'; // Hide the list after selection
+
+        const instagramSection = document.getElementById('instagramSection');
+        instagramSection.scrollIntoView({ behavior: 'smooth' });
       });
     } else {
       schools[i].style.display = 'none'; // Hide the school that doesn't match
