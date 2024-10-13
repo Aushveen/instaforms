@@ -254,6 +254,7 @@ img {
   padding: 20px 40px;
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
+  font-size: 16px; /* Set the font size to 16px to prevent zooming */
 }
 
 .search__icon {
