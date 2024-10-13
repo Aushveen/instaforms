@@ -192,7 +192,7 @@ document.getElementById('submitPhotoBtn').addEventListener('click', function () 
       submissionStatus.innerText = 'Success! Please remember to pay, redirecting you to the checkout...';
       // Redirect to Stripe checkout after 3 seconds
       setTimeout(() => {
-        window.location.href = 'https://buy.stripe.com/00g8xA1c59dSdOgdQU';
+        window.location.href = 'https://buy.stripe.com/6oE4hk2g989OaC47sx';
       }, 2000); // 3 second delay before redirect
     })
     .catch((error) => {
