@@ -86,7 +86,7 @@ document.getElementById('backPhotoBtn').addEventListener('click', function() {
   captionSection.scrollIntoView({ behavior: 'smooth' });
 });
 
-// Initialize a fixed-size array for storing uploaded files (6 slots)
+// Initialize a fixed-size array for storing uploaded files (9 slots)
 const uploadedFiles = new Array(9).fill(null);
 
 // Handle photo upload by triggering the input file click event
@@ -106,7 +106,7 @@ photoBoxes.forEach((box, index) => {
     if (file) {
       // Store the file in the corresponding index of the array
       uploadedFiles[index] = file;
-      
+
       // Preview the image using FileReader
       const reader = new FileReader();
       reader.onload = (e) => {
@@ -115,6 +115,20 @@ photoBoxes.forEach((box, index) => {
         img.alt = 'Uploaded Photo';
         box.innerHTML = ''; // Clear the box content
         box.appendChild(img); // Display the uploaded image in the box
+
+        // Create and append the close button (X) to remove the image
+        const closeBtn = document.createElement('div');
+        closeBtn.classList.add('close-btn');
+        closeBtn.innerHTML = '&times;'; // "X" symbol
+        box.appendChild(closeBtn);
+
+        // Add click event to the close button to remove the image
+        closeBtn.addEventListener('click', (e) => {
+          e.stopPropagation(); // Prevent triggering other click events
+          uploadedFiles[index] = null; // Remove the file from the array
+          box.innerHTML = '<i class="fas fa-plus"></i>'; // Reset the box content
+          input.value = ''; // Reset the file input
+        });
       };
       reader.readAsDataURL(file); // Read the file as a data URL for preview
 
