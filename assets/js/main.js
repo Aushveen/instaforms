@@ -150,8 +150,8 @@ document.getElementById('removeAllPhotosBtn').addEventListener('click', function
   });
 });
 
-// Handle form submission and append files from the array to FormData
-document.getElementById('submitPhotoBtn').addEventListener('click', function () {
+// Define the function for form submission, invoked via onClick on the button
+function submitPhotos() {
   const submissionStatus = document.getElementById('submissionStatus'); // Get the status element
   submissionStatus.classList.remove('success', 'error'); // Reset status classes
   submissionStatus.classList.add('processing');
@@ -226,4 +226,7 @@ document.getElementById('submitPhotoBtn').addEventListener('click', function () 
         submissionStatus.innerText = `Error submitting the form, please make sure you upload at least 1 photo`;
       }
     });
-});
+}
+
+// Add the onClick event listener to the submit button in JS
+document.getElementById('submitPhotoBtn').addEventListener('click', submitPhotos);
