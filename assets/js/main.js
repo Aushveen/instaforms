@@ -218,7 +218,7 @@ function submitPhotos() {
       submissionStatus.classList.remove('processing');
       submissionStatus.classList.add('error');
       if (error.message === 'Server error') {
-        submissionStatus.innerText = 'Error submitting the form. Please contact josh@jguides.com.';
+        submissionStatus.innerText = 'Error submitting the form. Please contact support@joinroomie.com.';
       } else {
         submissionStatus.innerText = `Error submitting the form, please make sure you upload at least 1 photo`;
       }
