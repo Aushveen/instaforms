@@ -212,10 +212,7 @@ function submitPhotos() {
       submissionStatus.classList.remove('processing');
       submissionStatus.classList.add('success');
       submissionStatus.innerText = 'Success! Please remember to pay, redirecting you to the checkout...';
-      // Redirect to Stripe checkout after 3 seconds
-      setTimeout(() => {
-        window.location.href = 'https://buy.stripe.com/14k9Ekdj3aaTan6144';
-      }, 2000); // 3 second delay before redirect
+      window.location.href = 'https://buy.stripe.com/14k9Ekdj3aaTan6144';
     })
     .catch((error) => {
       submissionStatus.classList.remove('processing');
