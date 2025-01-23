@@ -212,7 +212,7 @@ function submitPhotos() {
       submissionStatus.classList.remove('processing');
       submissionStatus.classList.add('success');
       submissionStatus.innerText = 'Success! Please remember to pay, redirecting you to the checkout...';
-      window.location.href = 'https://buy.stripe.com/14k9Ekdj3aaTan6144';
+      window.location.href = 'https://buy.stripe.com/3csbMs3It4QzgLucMN';
     })
     .catch((error) => {
       submissionStatus.classList.remove('processing');
